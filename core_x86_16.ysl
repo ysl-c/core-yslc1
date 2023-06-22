@@ -218,7 +218,5 @@ endf
 func getch
 	asm xor ah, ah
 	asm int 0x16
-	asm mov ah, 0x0E
-	asm int 0x10
 	asm xor ah, ah
 endf
