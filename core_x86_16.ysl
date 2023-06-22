@@ -99,7 +99,6 @@ func equals n1 n2
 	asm ret
 	asm .equals:
 	asm mov ax, 1
-	asm ret
 endf
 
 func less n1 n2
@@ -118,7 +117,6 @@ func less n1 n2
 	asm ret
 	asm .less:
 	asm mov ax, 1
-	asm ret
 endf
 
 func greater n1 n2
@@ -137,7 +135,6 @@ func greater n1 n2
 	asm ret
 	asm .greater:
 	asm mov ax, 1
-	asm ret
 endf
 
 func peek8 address
@@ -148,7 +145,6 @@ func peek8 address
 	asm mov di, [si]
 	asm mov al, [di]
 	asm xor ah, ah
-	asm ret
 endf
 
 func poke8 address value
@@ -162,7 +158,6 @@ func poke8 address value
 	asm mov si, ax
 	asm mov al, [si]
 	asm mov [di], al
-	asm ret
 endf
 
 func peek16 address
@@ -173,7 +168,6 @@ func peek16 address
 	asm mov di, [si]
 	asm mov si, [di]
 	asm mov ax, si
-	asm ret
 endf
 
 func poke16 address value
@@ -187,12 +181,42 @@ func poke16 address value
 	asm mov si, ax
 	asm mov bx, [si]
 	asm mov [di], bx
-	asm ret
+endf
+
+func peek16far segment address
+	param segment
+	param address
+
+	addr address
+	asm mov di, ax
+	asm mov si, [di]
+	addr segment
+	asm mov di, ax
+	asm mov si, [di]
+	asm mov es, si
+	asm mov ax, [es:si]
+endf
+
+func poke16far segment address value
+	param segment
+	param address
+	param value
+
+	addr address
+	asm mov di, ax
+	asm mov si, [di]
+	addr segment
+	asm mov di, ax
+	asm mov si, [di]
+	asm mov es, si
+	addr value
+	asm mov di, ax
+	asm mov ax, [di]
+	asm mov [es:si], ax
 endf
 
 func getch
 	asm xor ah, ah
 	asm int 0x16
 	asm xor ah, ah
-	asm ret
 endf
