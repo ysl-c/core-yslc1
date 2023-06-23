@@ -220,3 +220,104 @@ func getch
 	asm int 0x16
 	asm xor ah, ah
 endf
+
+func byte_and v1 v2
+	param v1
+	param v2
+
+	addr v1
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v2
+	asm mov si, ax
+	asm mov ax, [si]
+	asm xor ah, ah
+	asm and al, bl
+endf
+
+func byte_xor v1 v2
+	param v1
+	param v2
+
+	addr v1
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v2
+	asm mov si, ax
+	asm mov ax, [si]
+	asm xor ah, ah
+	asm xor al, bl
+endf
+
+func byte_or v1 v2
+	param v1
+	param v2
+
+	addr v1
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v2
+	asm mov si, ax
+	asm mov ax, [si]
+	asm xor ah, ah
+	asm or al, bl
+endf
+
+func byte_not v
+	param v
+
+	addr v
+	asm mov si, ax
+	asm mov ax, [si]
+	asm xor ah, ah
+	asm not al
+endf
+
+func word_and v1 v2
+	param v1
+	param v2
+
+	addr v1
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v2
+	asm mov si, ax
+	asm mov ax, [si]
+	asm and ax, bx
+endf
+
+func word_xor v1 v2
+	param v1
+	param v2
+
+	addr v1
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v2
+	asm mov si, ax
+	asm mov ax, [si]
+	asm xor ax, bx
+endf
+
+func word_or v1 v2
+	param v1
+	param v2
+
+	addr v1
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v2
+	asm mov si, ax
+	asm mov ax, [si]
+	asm or ax, bx
+endf
+
+func word_not v
+	param v
+
+	addr v
+	asm mov si, ax
+	asm mov ax, [si]
+	asm not ax
+endf
+
