@@ -346,7 +346,7 @@ func right_shift v n
 	asm mov si, ax
 	asm mov ax, [si]
 	asm mov cl, bl
-	asm shr ax, bl
+	asm shr ax, cl
 endfunc
 
 
