@@ -331,7 +331,8 @@ func left_shift v n
 	addr v
 	asm mov si, ax
 	asm mov ax, [si]
-	asm shl ax, bx
+	asm mov cl, bl
+	asm shl ax, cl
 endfunc
 
 func right_shift v n
@@ -344,7 +345,8 @@ func right_shift v n
 	addr v
 	asm mov si, ax
 	asm mov ax, [si]
-	asm shr ax, bx
+	asm mov cl, bl
+	asm shr ax, bl
 endfunc
 
 
