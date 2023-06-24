@@ -320,3 +320,31 @@ func word_not v
 	asm mov ax, [si]
 	asm not ax
 endfunc
+
+func left_shift v n
+	param v
+	param n
+
+	addr n
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v
+	asm mov si, ax
+	asm mov ax, [si]
+	asm shl ax, bx
+endfunc
+
+func right_shift v n
+	param v
+	param n
+
+	addr n
+	asm mov si, ax
+	asm mov bx, [si]
+	addr v
+	asm mov si, ax
+	asm mov ax, [si]
+	asm shr ax, bx
+endfunc
+
+
