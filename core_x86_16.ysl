@@ -7,12 +7,12 @@ func putch ch
 	asm mov ah, 0x0E
 	asm mov al, bl
 	asm int 0x10
-endf
+endfunc
 
 func exit
 	asm mov ah, 0x4C
 	asm int 0x21
-endf
+endfunc
 
 func add n1 n2
 	param n1
@@ -25,7 +25,7 @@ func add n1 n2
 	asm mov si, ax
 	asm mov ax, [si]
 	asm add ax, bx
-endf
+endfunc
 
 func sub n1 n2
 	param n1
@@ -38,7 +38,7 @@ func sub n1 n2
 	asm mov si, ax
 	asm mov ax, [si]
 	asm sub ax, bx
-endf
+endfunc
 
 func mul n1 n2
 	param n1
@@ -51,7 +51,7 @@ func mul n1 n2
 	asm mov si, ax
 	asm mov ax, [si]
 	asm mul bx
-endf
+endfunc
 
 func div n1 n2
 	param n1
@@ -66,7 +66,7 @@ func div n1 n2
 	asm xor dx, dx
 	asm div bx
 	asm ret
-endf
+endfunc
 
 func mod n1 n2
 	param n1
@@ -81,7 +81,7 @@ func mod n1 n2
 	asm xor dx, dx
 	asm div bx
 	asm mov ax, dx
-endf
+endfunc
 
 func equals n1 n2
 	param n1
@@ -99,7 +99,7 @@ func equals n1 n2
 	asm ret
 	asm .equals:
 	asm mov ax, 1
-endf
+endfunc
 
 func less n1 n2
 	param n1
@@ -117,7 +117,7 @@ func less n1 n2
 	asm ret
 	asm .less:
 	asm mov ax, 1
-endf
+endfunc
 
 func greater n1 n2
 	param n1
@@ -135,7 +135,7 @@ func greater n1 n2
 	asm ret
 	asm .greater:
 	asm mov ax, 1
-endf
+endfunc
 
 func peek8 address
 	param address
@@ -145,7 +145,7 @@ func peek8 address
 	asm mov di, [si]
 	asm mov al, [di]
 	asm xor ah, ah
-endf
+endfunc
 
 func poke8 address value
 	param address
@@ -158,7 +158,7 @@ func poke8 address value
 	asm mov si, ax
 	asm mov al, [si]
 	asm mov [di], al
-endf
+endfunc
 
 func peek16 address
 	param address
@@ -168,7 +168,7 @@ func peek16 address
 	asm mov di, [si]
 	asm mov si, [di]
 	asm mov ax, si
-endf
+endfunc
 
 func poke16 address value
 	param address
@@ -181,7 +181,7 @@ func poke16 address value
 	asm mov si, ax
 	asm mov bx, [si]
 	asm mov [di], bx
-endf
+endfunc
 
 func peek16far segment address
 	param segment
@@ -195,7 +195,7 @@ func peek16far segment address
 	asm mov si, [di]
 	asm mov es, si
 	asm mov ax, [es:si]
-endf
+endfunc
 
 func poke16far segment address value
 	param segment
@@ -213,13 +213,13 @@ func poke16far segment address value
 	asm mov di, ax
 	asm mov ax, [di]
 	asm mov [es:si], ax
-endf
+endfunc
 
 func getch
 	asm xor ah, ah
 	asm int 0x16
 	asm xor ah, ah
-endf
+endfunc
 
 func byte_and v1 v2
 	param v1
@@ -233,7 +233,7 @@ func byte_and v1 v2
 	asm mov ax, [si]
 	asm xor ah, ah
 	asm and al, bl
-endf
+endfunc
 
 func byte_xor v1 v2
 	param v1
@@ -247,7 +247,7 @@ func byte_xor v1 v2
 	asm mov ax, [si]
 	asm xor ah, ah
 	asm xor al, bl
-endf
+endfunc
 
 func byte_or v1 v2
 	param v1
@@ -261,7 +261,7 @@ func byte_or v1 v2
 	asm mov ax, [si]
 	asm xor ah, ah
 	asm or al, bl
-endf
+endfunc
 
 func byte_not v
 	param v
@@ -271,7 +271,7 @@ func byte_not v
 	asm mov ax, [si]
 	asm xor ah, ah
 	asm not al
-endf
+endfunc
 
 func word_and v1 v2
 	param v1
@@ -284,7 +284,7 @@ func word_and v1 v2
 	asm mov si, ax
 	asm mov ax, [si]
 	asm and ax, bx
-endf
+endfunc
 
 func word_xor v1 v2
 	param v1
@@ -297,7 +297,7 @@ func word_xor v1 v2
 	asm mov si, ax
 	asm mov ax, [si]
 	asm xor ax, bx
-endf
+endfunc
 
 func word_or v1 v2
 	param v1
@@ -310,7 +310,7 @@ func word_or v1 v2
 	asm mov si, ax
 	asm mov ax, [si]
 	asm or ax, bx
-endf
+endfunc
 
 func word_not v
 	param v
@@ -319,5 +319,4 @@ func word_not v
 	asm mov si, ax
 	asm mov ax, [si]
 	asm not ax
-endf
-
+endfunc
