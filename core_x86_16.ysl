@@ -228,7 +228,7 @@ func peek8far segment address
 	asm mov es, si
 	asm xor ah, ah
 	asm mov al, [es:si]
-endif
+endfunc
 
 func poke8far segment address value
 	param segment
@@ -246,7 +246,7 @@ func poke8far segment address value
 	asm mov di, ax
 	asm mov al, [di]
 	asm mov [es:si], al
-endif
+endfunc
 
 func getch
 	asm xor ah, ah
