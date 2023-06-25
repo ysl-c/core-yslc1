@@ -215,6 +215,39 @@ func poke16far segment address value
 	asm mov [es:si], ax
 endfunc
 
+func peek8far segment address
+	param segment
+	param address
+
+	addr address
+	asm mov di, ax
+	asm mov si, [di]
+	addr segment
+	asm mov di, ax
+	asm mov si, [di]
+	asm mov es, si
+	asm xor ah, ah
+	asm mov al, [es:si]
+endif
+
+func poke8far segment address value
+	param segment
+	param address
+	param value
+
+	addr address
+	asm mov di, ax
+	asm mov si, [di]
+	addr segment
+	asm mov di, ax
+	asm mov si, [di]
+	asm mov es, si
+	addr value
+	asm mov di, ax
+	asm mov al, [di]
+	asm mov [es:si], al
+endif
+
 func getch
 	asm xor ah, ah
 	asm int 0x16
